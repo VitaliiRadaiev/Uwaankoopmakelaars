@@ -46,6 +46,16 @@
             height: auto;
             margin-left: 40px;
         }
+
+        & svg {
+            & path {
+                fill: #fff;
+            }
+
+            & text {
+                fill: #fff;
+            }
+        } 
     }
 
     &__content {
@@ -66,6 +76,11 @@
             font-size: 34px;
             line-height: 1.2em;
             margin-bottom: 0.4em;
+            font-weight: 400;
+
+            @media (max-width: $md4+px) {
+                font-size: 28px;
+            }
         }
 
         & p {
@@ -95,7 +110,7 @@
             align-items: center;
             padding: 14px 90px 14px 24px;
             font-size: 22px;
-            font-weight: 600;
+            font-weight: 400;
             cursor: pointer;
             color: #000;
             flex: 0 0 auto;
@@ -109,11 +124,21 @@
             @media (min-width: 992px) {
                 &:hover {
                     color: #fff;
-
-                    & span {
-                        transform: translateX(30px);
+                    &:not([type="submit"]) {
+                        & span {
+                            transform: translateX(30px);
+                        }
                     }
+ 
                 }
+            }
+
+            &[type="submit"] {
+                padding: 14px 24px 14px 24px;
+                font-size: 32px;
+                min-width: 280px;
+                text-align: center;
+                justify-content: center;
             }
         }
     }
@@ -218,6 +243,7 @@
         }
     }
 
+
     & .swiper-slide {
         opacity: 0 !important;
 
@@ -241,7 +267,45 @@
             display: inline-block;
         }
     }
+
+    &__calendar {
+        
+        @media (min-width: 768px) {
+            display: flex;
+
+        }
+    }
+
+    &__calendar-label {
+        flex: 1 1 auto;
+        padding-right: 30px;
+        font-size: 35px;
+        margin-bottom: 20px;
+    }
+
+    &__calendar-body {
+        flex: 0 0 55%;
+        background-color: #fff;
+        border: 1px solid #000;
+        border-radius: 12px;
+        height: 602px;
+        overflow: hidden;
+    }
+
+    &__end {
+
+    }
+
+    &__end-img {
+        & img {
+            display: inline-block;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+        }
+    }
 }
+
 
 .quiz-checkbox-radio {
     display: inline-block;
@@ -314,6 +378,45 @@
     }
 }
 
+.quiz-services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -7.5px;
+
+    &__item {
+        margin: 0 7.5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        border: 1px solid #000;
+        border-radius: 10px;
+        min-height: 68px;
+        padding: 8px 20px;
+        flex: 1 1 auto;
+        max-width: 211px;
+        min-width: 196px;
+        margin-bottom: 15px;
+
+        & p {
+            margin-bottom: 0;
+            font-size: 12px;
+        }
+
+        & img {
+            flex: 0 0 auto;
+            max-height: 47px;
+            margin-left: 5px;
+            width: auto;
+            height: auto;
+        }
+    }
+}
+
+.display-none {
+    display: none;
+}
 .flex {
     display: flex;
     flex: 0 1 auto;

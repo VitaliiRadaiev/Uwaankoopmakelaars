@@ -9648,6 +9648,34 @@ if(formQuiz) {
         })
     }
     // and form buttons handler ===
+}
+
+let inputShowElAll = document.querySelectorAll('input[data-show-el]');
+if(inputShowElAll.length) {
+    inputShowElAll.forEach(input => {
+        let el = document.querySelector(input.dataset.showEl);
+        if(el) {
+            input.addEventListener('change', () => {
+                if(input.checked) {
+                    el.style.display = 'block';
+                }
+            })
+        }
+
+    })
+}
+let inputHideElAll = document.querySelectorAll('input[data-hide-el]');
+if(inputHideElAll.length) {
+    inputHideElAll.forEach(input => {
+        let el = document.querySelector(input.dataset.hideEl);
+        if(el) {
+            input.addEventListener('change', () => {
+                if(input.checked) {
+                    el.style.display = 'none';
+                }
+            })
+        }
+    })
 };
 // and form quiz =============
 });

@@ -89,7 +89,7 @@
 			<form action="/" class="form-quiz">
 				<div class="swiper-container">
 					<div class="swiper-wrapper">
-						<!-- <div class="form-quiz__item swiper-slide">
+						<div class="form-quiz__item swiper-slide">
 							<div class="form-quiz__head">
 								Wat?
 							</div>
@@ -139,8 +139,8 @@
 									</div>
 								</div>
 							</div>
-						</div> -->
-						<!-- <div class="form-quiz__item swiper-slide">
+						</div>
+						<div class="form-quiz__item swiper-slide">
 							<div class="form-quiz__head">
 								Aankoopbegeleiding <img class="img-svg" src="img/icons/Aankoop-icon.svg" alt="">
 							</div>
@@ -150,7 +150,7 @@
 									<div class="form-quiz__group flex">
 										<div class="form-quiz__group-item flex-width-auto mr-18">
 											<label class="quiz-checkbox-radio">
-												<input type="radio" name="q1">
+												<input type="radio" name="q1" data-show-el="#houseInfo">
 												<div class="quiz-checkbox-radio__text">
 													Ja
 												</div>
@@ -158,7 +158,7 @@
 										</div>
 										<div class="form-quiz__group-item flex-width-auto">
 											<label class="quiz-checkbox-radio">
-												<input type="radio" name="q1">
+												<input type="radio" name="q1" data-hide-el="#houseInfo">
 												<div class="quiz-checkbox-radio__text">
 													Nee
 												</div>
@@ -166,7 +166,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="form-quiz__row">
+								<div id="houseInfo" class="form-quiz__row display-none">
 									<p>Wat is het adres van deze woning?</p>
 									<div class="form-quiz__group flex flex-wrap max-width-435">
 										<div class="form-quiz__group-item half min-width-150">
@@ -190,10 +190,7 @@
 											</label>
 										</div>
 									</div>
-								</div>
-
-								<div class="form-quiz__row flex flex-wrap align-items-cente">
-									<div class="form-quiz__group flex r">
+									<div class="form-quiz__group flex">
 										<div class="form-quiz__group-item mr-18 width-115">
 											<label class="quiz-input">
 												<span>Huisnummer</span>
@@ -207,11 +204,13 @@
 											</label>
 										</div>
 									</div>
+								</div>
+								<div class="form-quiz__row flex align-items-cente mt-auto">
 									<button data-slide-to="next" class="ml-auto" type="button"><span>Volgende</span></button>
 								</div>
 							</div>
-						</div> -->
-						<!-- <div class="form-quiz__item swiper-slide">
+						</div>
+						<div class="form-quiz__item swiper-slide">
 							<div class="form-quiz__head">
 								Aankoopbegeleiding <img class="img-svg" src="img/icons/Aankoop-icon.svg" alt="">
 							</div>
@@ -279,7 +278,7 @@
 									<button data-slide-to="next" class="ml-auto" type="button"><span>Volgende</span></button>
 								</div>
 							</div>
-						</div> -->
+						</div>
 						<div class="form-quiz__item swiper-slide">
 							<div class="form-quiz__head">
 								Hoe wilt u contact? <img class="img-svg" src="img/icons/phone-icon.svg" alt="">
@@ -332,6 +331,99 @@
 								</div>
 							</div>
 						</div>
+						<div class="form-quiz__item swiper-slide">
+							<div class="form-quiz__head">
+								Wie? <img class="img-svg" src="img/icons/phone-icon.svg" alt="">
+							</div>
+							<div class="form-quiz__content">
+								<div class="form-quiz__row">
+									<p>Om u vragen zo snel mogelijk te kunnen beantwoorden, vragen we u om de volgende gegevens.</p>
+									<div class="form-quiz__group flex flex-wrap">
+										<div class="form-quiz__group-item half min-width-150">
+											<label class="quiz-input">
+												<span>Voornaam</span>
+												<input type="text" placeholder="">
+											</label>
+										</div>
+										<div class="form-quiz__group-item half min-width-150">
+											<label class="quiz-input">
+												<span>Achternaam</span>
+												<input type="text" placeholder="">
+											</label>
+										</div>
+										<div class="form-quiz__group-item half min-width-150">
+											<label class="quiz-input">
+												<span>Email</span>
+												<input type="text" placeholder="">
+											</label>
+										</div>
+										<div class="form-quiz__group-item half min-width-150">
+											<label class="quiz-input">
+												<span>Telefoonnr</span>
+												<input type="text" placeholder="">
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+									<button data-slide-to="next" class="ml-auto" type="button"><span>Volgende</span></button>
+								</div>
+							</div>
+						</div>
+						<div class="form-quiz__item swiper-slide">
+							<div class="form-quiz__head">
+								Wanner? <img class="img-svg" src="img/icons/calendar-icon.svg" alt="">
+							</div>
+							<div class="form-quiz__content">
+								<div class="form-quiz__row">
+									<div class="form-quiz__calendar">
+										<div class="form-quiz__calendar-label">Calendy</div>
+										<div class="form-quiz__calendar-body">
+											<iframe src="https://calendly.com/marssagency/15min?embed_domain=aboutmarss.nl&amp;embed_type=Inline&amp;hide_event_type_details=1&amp;hide_gdpr_banner=1" width="100%" height="100%" frameborder="0" style="opacity: 1; visibility: visible;"></iframe>
+										</div>
+									</div>
+								</div>
+								<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+									<button data-slide-to="next" class="ml-auto" type="button"><span>Volgende</span></button>
+								</div>
+							</div>
+						</div>
+						<div class="form-quiz__item swiper-slide last">
+							<div class="form-quiz__head">
+
+							</div>
+							<div class="form-quiz__content">
+								<div class="form-quiz__end text-center">
+									<div class="form-quiz__row form-quiz__end-img">
+										<img src="img/photo/and-img.png" alt="">
+									</div>
+									<div class="form-quiz__row">
+										<h3>Dankuwel!</h3>
+										<h3>We nemen zo snel mogelijk met u contact op.</h3>
+									</div>
+									<div class="form-quiz__row">
+										<p>Kunnen wij u verder nog helpen met:</p>
+										<div class="quiz-services">
+											<div class="quiz-services__item">
+												<p>Aankoopbegeleiding</p>
+												<img src="img/icons/Aankoop-icon.svg" alt="">
+											</div>
+											<div class="quiz-services__item">
+												<p>Aanhuurbegeleiding</p>
+												<img src="img/icons/Aanhuur-icon.svg" alt="">
+											</div>
+											<div class="quiz-services__item">
+												<p>Beleggingspanden</p>
+												<img src="img/icons/Belegpand-icon.svg" alt="">
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-quiz__row text-center mt-auto">
+									<button type="submit"><span>sluit venser</span></button>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="swiper-pagination"></div>
 				</div>
@@ -339,7 +431,6 @@
 		</div>
 	</div>
 </div>
-
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		
 <script src="js/vendors.js"></script>
