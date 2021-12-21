@@ -1,0 +1,130 @@
+// ==== VARS ===========================================================================================
+@import "vars";
+// ==== // VARS ===========================================================================================
+
+/* swiper-slider plugin  ==============*/
+@import "plagins/swiper-bundle";
+/* and swiper-slider plugin  ==============*/
+
+* {
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+}
+*,
+*:before,
+*:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+body {
+	padding-top: 121px;
+	font-family: $mainFontFamily;
+
+	@media (max-width: 1100px) {
+		padding-top: 0px;
+	}
+}
+
+
+/* header nav =============== */
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 47;
+
+	// & .menu3_top_section>.et_pb_row>.et_pb_column_1_4.et_pb_column_5_tb_header,
+	// & .menu3_top_section>.et_pb_row>.et_pb_column_1_4.et_pb_column_7_tb_header
+	// {
+	// 	flex: 0 0 auto;
+	// 	width: auto !important;
+	// 	float: none;
+	// }
+
+	// & .menu3_top_section>.et_pb_row>.et_pb_column_1_2.et_pb_column_6_tb_header {
+	// 	width: auto !important;
+	// 	flex: 0 1 auto !important;
+	// 	float: none;
+	// 	margin-left: auto;
+
+	// }
+
+	& .menu3_top_section {
+		& .fullwidth-menu {
+			& .menu-item {
+				&:hover {
+					& a {
+						&:after {
+							width: 100% !important;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	& .et_pb_fullwidth_menu_0_tb_header.et_pb_fullwidth_menu .nav .menu-item .sub-menu  {
+		background-color: transparent !important;
+
+		& .et_pb_section  {
+			background-color: transparent !important;
+		}
+	}
+
+	& nav.fullwidth-menu-nav {
+		display: flex !important;
+		justify-content: flex-end;
+	}
+	& #menu-megamenu.nav {
+		position: relative;
+		display: grid !important;
+		grid-auto-flow: column;
+		column-gap: 25px;
+		flex: 0 0 auto;
+		&:hover {
+			&:before {
+				transform: scaleY(1);
+			}
+		}
+
+		&:before {
+			position: absolute;
+			content: '';
+			z-index: -1;
+			background-color: $mainColor;
+			top: 100%;
+			left: -100px;
+			width: 100vw;
+			height: calc(100vh - 119px);
+			transition: all .6s ease;
+			transform: scaleY(0);
+			transform-origin: center top;
+		}
+
+		& ul.sub-menu.mega {
+			left: -40px;
+		}
+	}
+}
+/* and header nav =============== */
+
+/* popup =============== */
+@import "../common/popup/popup";
+/* and popup  =============== */
+
+
+/* form quiz ================*/
+@import "../common/form-quiz/form-quiz";
+/* and form quiz ================*/

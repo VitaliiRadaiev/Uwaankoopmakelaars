@@ -1,0 +1,46 @@
+.popup {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color:  rgba(#000, 0.8);
+	z-index: 50;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	visibility: hidden;
+	overflow-y: auto;
+	overflow-x: hidden;
+	transition: all 0.8s ease 0s;
+
+	&.open {
+		opacity: 1;
+		visibility: visible;
+
+		& .popup_content {
+			opacity: 1;
+		}
+	}
+
+	&_body {
+		min-height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 1.5rem 3rem;
+		
+		@media (max-width: $md3+px) {
+			padding: 10px;
+		}
+	}
+
+	&_content {
+		background: #fcf8ed;
+		max-width: 1060px;
+		position: relative;
+		width: 100%;
+		transition: all 0.8s ease 0s;
+		opacity: 0;
+		outline: 0;
+	}
+
+}
