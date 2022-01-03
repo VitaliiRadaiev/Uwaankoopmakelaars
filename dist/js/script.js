@@ -9644,10 +9644,10 @@ let unlock = true;
 
 const timeout = 800;
 
-if(popupLinks.length > 0) {
+if (popupLinks.length > 0) {
 	for (let index = 0; index < popupLinks.length; index++) {
 		const popupLink = popupLinks[index];
-		popupLink.addEventListener('click', function(e) {
+		popupLink.addEventListener('click', function (e) {
 			const popupName = popupLink.getAttribute('href').replace('#', '');
 			const curentPopup = document.getElementById(popupName);
 			popupOpen(curentPopup);
@@ -9658,10 +9658,10 @@ if(popupLinks.length > 0) {
 
 
 const popupCloseIcon = document.querySelectorAll('.close-popup');
-if(popupCloseIcon.length > 0) {
-	for(let index = 0; index < popupCloseIcon.length; index++) {
+if (popupCloseIcon.length > 0) {
+	for (let index = 0; index < popupCloseIcon.length; index++) {
 		const el = popupCloseIcon[index];
-		el.addEventListener('click', function(e) {
+		el.addEventListener('click', function (e) {
 			popupClose(el.closest('.popup'));
 			e.preventDefault();
 		});
@@ -9669,7 +9669,7 @@ if(popupCloseIcon.length > 0) {
 }
 
 function popupOpen(curentPopup) {
-	if(curentPopup && unlock) {
+	if (curentPopup && unlock) {
 		const popupActive = document.querySelector('.popup.open');
 		if (popupActive) {
 			popupClose(popupActive, false);
@@ -9677,8 +9677,8 @@ function popupOpen(curentPopup) {
 			bodyLock();
 		}
 		curentPopup.classList.add('open');
-		curentPopup.addEventListener('click', function(e) {
-			if(!e.target.closest('.popup_content')) {
+		curentPopup.addEventListener('click', function (e) {
+			if (!e.target.closest('.popup_content')) {
 				popupClose(e.target.closest('.popup'));
 			}
 		});
@@ -9687,9 +9687,9 @@ function popupOpen(curentPopup) {
 }
 
 function popupClose(popupActive, doUnlock = true) {
-	if(unlock) {
+	if (unlock) {
 		popupActive.classList.remove('open');
-		if(doUnlock) {
+		if (doUnlock) {
 			bodyUnlock();
 		}
 	}
@@ -9698,14 +9698,14 @@ function popupClose(popupActive, doUnlock = true) {
 function bodyLock() {
 	const lockPaddingValue = window.innerWidth - document.querySelector('body').offsetWidth + 'px';
 	let targetPadding = document.querySelectorAll('._lp');
-	if(targetPadding.length) {
+	if (targetPadding.length) {
 		for (let index = 0; index < targetPadding.length; index++) {
 			const el = targetPadding[index];
 			el.style.paddingRight = lockPaddingValue;
 		}
 	}
 
-	if(lockPadding.length > 0) {
+	if (lockPadding.length > 0) {
 		for (let index = 0; index < lockPadding.length; index++) {
 			const el = lockPadding[index];
 			el.style.paddingRight = lockPaddingValue;
@@ -9716,7 +9716,7 @@ function bodyLock() {
 	body.classList.add('lock');
 
 	unlock = false;
-	setTimeout(function() {
+	setTimeout(function () {
 		unlock = true;
 	}, timeout);
 }
@@ -9724,15 +9724,15 @@ function bodyLock() {
 function bodyUnlock() {
 	let targetPadding = document.querySelectorAll('._lp');
 
-	setTimeout(function() {
-		if(targetPadding.length) {
+	setTimeout(function () {
+		if (targetPadding.length) {
 			for (let index = 0; index < targetPadding.length; index++) {
 				const el = targetPadding[index];
 				el.style.paddingRight = '0px';
 			}
 		}
 
-		for( let index = 0; index < lockPadding.length; index++) {
+		for (let index = 0; index < lockPadding.length; index++) {
 			const el = lockPadding[index];
 			el.style.paddingRight = '0px';
 		}
@@ -9742,41 +9742,77 @@ function bodyUnlock() {
 	}, timeout);
 
 	unlock = false;
-	setTimeout(function() { 
+	setTimeout(function () {
 		unlock = true;
 	}, timeout);
 }
 
-document.addEventListener('keydown', function(e) {
-	if(e.which === 27) {
+document.addEventListener('keydown', function (e) {
+	if (e.which === 27) {
 		const popupActive = document.querySelector('.popup.open');
 		popupClose(popupActive);
 	}
 });
 
 // === Polyfill ===
-	(function() {
-		if(!Element.prototype.closest) {
-			Element.prototype.closest = function(css) {
-				var node = this;
-				while(node) {
-					if(node.matches(css)) return node;
-					else node == node.parentElement;
-				}
-				return null;
-			};
-		}
-	})();
+(function () {
+	if (!Element.prototype.closest) {
+		Element.prototype.closest = function (css) {
+			var node = this;
+			while (node) {
+				if (node.matches(css)) return node;
+				else node == node.parentElement;
+			}
+			return null;
+		};
+	}
+})();
 
-	(function() {
-		if(!Element.prototype.matches) {
-			Element.prototype.matches = Element.prototype.matchesSelector ||
-				Element.prototype.webkitMatchesSelector ||
-				Element.prototype.mozMatchesSelector ||
-				Element.prototype.mozMatchesSelector;
+(function () {
+	if (!Element.prototype.matches) {
+		Element.prototype.matches = Element.prototype.matchesSelector ||
+			Element.prototype.webkitMatchesSelector ||
+			Element.prototype.mozMatchesSelector ||
+			Element.prototype.mozMatchesSelector;
+	}
+})();
+// === AND Polyfill ===
+
+window.popup = {
+	open(id) {
+		if (!id) return;
+
+		let popup = document.querySelector(id);
+
+		if (!popup) return;
+
+		popupOpen(popup);
+	},
+	close(id) {
+		if (!id) return;
+
+		let popup = document.querySelector(id);
+
+		if (!popup) return;
+
+		popupClose(popup);
+	},
+	addEvent(event, popupId, callback) {
+		if (event === 'close') {
+			closeCallbacks[popupId] = callback;
 		}
-	})();
-// === AND Polyfill ===;
+	}
+}
+;
+
+let popupTriggerTooltip = document.querySelector('.popup-btn .btn-tooltip');
+if(popupTriggerTooltip) {
+	window.addEventListener('scroll', () => {
+		if(document.documentElement.clientWidth > 992) {
+			popupTriggerTooltip.classList.toggle('show', window.pageYOffset + document.documentElement.clientHeight / 2 > document.documentElement.scrollHeight / 2);
+		}
+	});
+}
 // and popup handler ==============
 
 
@@ -9788,6 +9824,10 @@ function fromButtonsHandler(buttons, dataSlider) {
                 let value = button.dataset.slideTo;
                 if (value === 'next') {
                     dataSlider.slideNext();
+                } else if (value === 'prev') {
+                    dataSlider.slidePrev();
+                } else if (value === 'disabled') {
+                    return;
                 } else {
                     dataSlider.slideTo(value)
                 }
@@ -9795,7 +9835,50 @@ function fromButtonsHandler(buttons, dataSlider) {
         })
     }
 }
+function showElAfterChangeInput(elements, callback) {
+    if (elements.length) {
+        elements.forEach(input => {
+            let el = document.querySelector(input.dataset.showEl);
+            if (el) {
+                input.addEventListener('change', () => {
+                    if (input.checked) {
+                        el.style.display = 'block';
 
+                        if (typeof callback === 'function') {
+                            callback();
+                        }
+                    }
+                })
+            }
+
+        })
+    }
+}
+function hideElAfterChangeInput(elements, callback) {
+    if (elements.length) {
+        elements.forEach(input => {
+            let el = document.querySelector(input.dataset.hideEl);
+            if (el) {
+                input.addEventListener('change', () => {
+                    if (input.checked) {
+                        el.style.display = 'none';
+
+                        if (typeof callback === 'function') {
+                            callback();
+                        }
+                    }
+                })
+            }
+        })
+    }
+}
+
+
+
+let popupWrapper = document.querySelector('.popup-wrapper');
+if (popupWrapper) {
+    document.body.append(popupWrapper);
+}
 
 let formQuiz = document.querySelector('.form-quiz');
 if (formQuiz) {
@@ -9809,7 +9892,7 @@ if (formQuiz) {
             slidesPerView: 1,
             spaceBetween: 0,
             autoHeight: true,
-            speed: 800,
+            speed: 300,
             watchOverflow: true,
             touchRatio: 0,
             pagination: {
@@ -9823,6 +9906,11 @@ if (formQuiz) {
         if (firstSlideButton) {
             fromButtonsHandler([firstSlideButton], dataSliderStart);
         }
+
+        let firstSlideButtonPrev = sliderStart.querySelectorAll('button[data-slide-to].first-slider');
+        if (firstSlideButtonPrev.length) {
+            fromButtonsHandler(firstSlideButtonPrev, dataSliderStart);
+        }
     }
 
     let stepSliders = formQuiz.querySelectorAll('.swiper-container.swiper-slide');
@@ -9833,10 +9921,10 @@ if (formQuiz) {
                 observer: true,
                 observeParents: true,
                 slidesPerView: 1,
-               // initialSlide: 2, // delet
+                // initialSlide: 2, // delet
                 spaceBetween: 0,
                 autoHeight: true,
-                speed: 800,
+                speed: 300,
                 watchOverflow: true,
                 touchRatio: 0,
                 pagination: {
@@ -9846,23 +9934,32 @@ if (formQuiz) {
                 },
             });
 
-            let buttons = slider.querySelectorAll('button[data-slide-to]');
+            const updateSliders = () => {
+                let id = setInterval(() => {
+                    dataSliderStart.update();
+                    dataSlider.update();
+                }, 20);
+                setTimeout(() => {
+                    clearInterval(id);
+                }, 800)
+            }
+
+            let inputShowElAll = slider.querySelectorAll('input[data-show-el]');
+            showElAfterChangeInput(inputShowElAll, updateSliders);
+
+            let inputHideElAll = slider.querySelectorAll('input[data-hide-el]');
+            hideElAfterChangeInput(inputHideElAll, updateSliders);
+
+            let buttons = slider.querySelectorAll('button[data-slide-to]:not(.first-slider)');
             if (buttons.length) {
                 fromButtonsHandler(buttons, dataSlider);
                 buttons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        let id = setInterval(() => {
-                            dataSliderStart.update();
-                        }, 20);
-                        setTimeout(() => {
-                            clearInterval(id);
-                        }, 800)
-                    })
+                    button.addEventListener('click', updateSliders);
                 })
             }
 
             let dateInput = slider.querySelector('input.date-input');
-            let finalText = slider.querySelector('.final-text');
+            let finalText = document.querySelector('.final-text');
             if (dateInput) {
                 let picker = datepicker(dateInput, {
                     formatter: (input, date, instance) => {
@@ -9880,40 +9977,11 @@ if (formQuiz) {
     }
 }
 
-
-let inputShowElAll = document.querySelectorAll('input[data-show-el]');
-if (inputShowElAll.length) {
-    inputShowElAll.forEach(input => {
-        let el = document.querySelector(input.dataset.showEl);
-        if (el) {
-            input.addEventListener('change', () => {
-                if (input.checked) {
-                    el.style.display = 'block';
-                }
-            })
-        }
-
-    })
-}
-let inputHideElAll = document.querySelectorAll('input[data-hide-el]');
-if (inputHideElAll.length) {
-    inputHideElAll.forEach(input => {
-        let el = document.querySelector(input.dataset.hideEl);
-        if (el) {
-            input.addEventListener('change', () => {
-                if (input.checked) {
-                    el.style.display = 'none';
-                }
-            })
-        }
-    })
-}
-
 let inputChangeNextSlide = document.querySelectorAll('input[data-change-next-slide]');
 if (inputChangeNextSlide.length) {
     inputChangeNextSlide.forEach(input => {
         let value = input.dataset.changeNextSlide;
-        let button = input.closest('.form-quiz__item').querySelector('button[data-slide-to]');
+        let button = input.closest('.form-quiz__item').querySelector('button[data-slide-to]:not(.prev)');
         input.addEventListener('change', () => {
             if (input.checked) {
                 button.dataset.slideTo = value;
@@ -9921,7 +9989,54 @@ if (inputChangeNextSlide.length) {
             }
         })
     })
-};
+}
+
+let inputSetNextSlideValue = document.querySelectorAll('input[data-set-next-slide-value-by-id]');
+if (inputSetNextSlideValue.length) {
+    inputSetNextSlideValue.forEach(input => {
+        const [id, value] = input.dataset.setNextSlideValueById.split(',').map(i => i.trim());
+        const button = document.querySelector(id);
+        if (button) {
+            input.addEventListener('change', () => {
+                if (input.checked) {
+                    button.dataset.slideTo = value;
+                }
+            })
+        }
+    })
+}
+
+let inputChangeButtonType = document.querySelectorAll('input[data-change-button-type]');
+if (inputChangeButtonType.length) {
+    inputChangeButtonType.forEach(input => {
+        const [id, value] = input.dataset.changeButtonType.split(',').map(i => i.trim());
+        const button = document.querySelector(id);
+        if (button) {
+            input.addEventListener('change', () => {
+                if (input.checked) {
+                    button.setAttribute('type', value);
+                }
+            })
+        }
+    })
+}
+
+
+let setValueInputHidden = document.querySelectorAll('.form-quiz input[type="radio"]');
+if(setValueInputHidden.length) {
+    setValueInputHidden.forEach(input => {
+        let inputHidden = document.querySelector(`input[type="hidden"][name="${input.name}"]`);
+        if(inputHidden) {
+            input.name = input.name + '_not-use';
+            input.addEventListener('change', () => {
+                if (input.checked) {
+                    inputHidden.value = input.value;
+                }
+            })
+        }
+    })
+}
+;
 // and form quiz =============
 });
 

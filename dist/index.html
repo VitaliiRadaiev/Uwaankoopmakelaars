@@ -86,10 +86,10 @@
 		<div class="popup open" id="quizPopup">
 	<div class="popup_body">
 		<div class="popup_content">
-			<form action="/" class="form-quiz">
-				<div class="swiper-container">
+			<div class="form-quiz">
+				<div class="slider-start swiper-container">
 					<div class="swiper-wrapper">
-						<div class="form-quiz__item swiper-slide">
+						<div class="form-quiz__item first swiper-slide">
 							<div class="form-quiz__head">
 								Wat?
 							</div>
@@ -100,12 +100,14 @@
 								</div>
 								<div class="form-quiz__row">
 									<div class="form-quiz__start">
+										<input type="hidden" name="qiuz-start" value="" class="wpcf7-form-control wpcf7-hidden">
 										<div class="form-quiz__start-item">
 											<label class="form-quiz__start-radio">
-												<input type="radio" name="qiuz-start" checked>
+												<input type="radio" name="qiuz-start" value="Aankoopbegeleiding" data-change-next-slide="1">
 												<div class="form-quiz__start-radio-content">
 													<p>Aankoopbegeleiding</p>
-													<img src="img/icons/Aankoop-icon.svg" alt="">
+													<img src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Aankoop-icon.svg"
+														alt="">
 												</div>
 											</label>
 										</div>
@@ -113,331 +115,862 @@
 										</div>
 										<div class="form-quiz__start-item">
 											<label class="form-quiz__start-radio">
-												<input type="radio" name="qiuz-start">
+												<input type="radio" name="qiuz-start" value="Aanhuurbegeleiding" data-change-next-slide="2">
 												<div class="form-quiz__start-radio-content">
 													<p>Aanhuurbegeleiding</p>
-													<img src="img/icons/Aanhuur-icon.svg" alt="">
+													<img src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Aanhuur-icon.svg"
+														alt="">
 												</div>
 											</label>
 										</div>
 										<div class="form-quiz__start-item">
 											<label class="form-quiz__start-radio">
-												<input type="radio" name="qiuz-start">
+												<input type="radio" name="qiuz-start" value="Beleggingspanden" data-change-next-slide="3">
 												<div class="form-quiz__start-radio-content">
 													<p>Beleggingspanden</p>
-													<img src="img/icons/Belegpand-icon.svg" alt="">
+													<img src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Belegpand-icon.svg"
+														alt="">
 												</div>
 											</label>
 										</div>
 									</div>
 								</div>
-								<div class="form-quiz__row">
+								<div class="form-quiz__row text-center">
 									<p>Wilt u begeleiding bij de verkoop van uw woning?</p>
-									<div class="form-quiz__group flex align-items-center">
-										<a href="#">Klik dan hier</a>
-										<button data-slide-to="next" class="ml-auto" type="button"><span>Volgende</span></button>
-									</div>
+									<a href="#">Klik dan hier</a>
+								</div>
+								<div class="form-quiz__row flex mt-auto">
+									<button class="close-popup first">Terug</button>
+									<button data-slide-to="next" disabled class="ml-auto"
+										type="button"><span>Volgende</span></button>
 								</div>
 							</div>
 						</div>
-						<div class="form-quiz__item swiper-slide">
-							<div class="form-quiz__head">
-								Aankoopbegeleiding <img class="img-svg" src="img/icons/Aankoop-icon.svg" alt="">
-							</div>
-							<div class="form-quiz__content">
-								<div class="form-quiz__row">
-									<p>Heeft u al een woning op het oog?</p>
-									<div class="form-quiz__group flex">
-										<div class="form-quiz__group-item flex-width-auto mr-18">
-											<label class="quiz-checkbox-radio">
-												<input type="radio" name="q1" data-show-el="#houseInfo">
-												<div class="quiz-checkbox-radio__text">
-													Ja
+						<form id="quizForm1" action="/" class="swiper-container swiper-slide">
+							<div class="swiper-wrapper">
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Aankoopbegeleiding <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Aankoop-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<p>Heeft u al een woning op het oog?</p>
+											<div class="form-quiz__group flex">
+												<div class="form-quiz__group-item flex-width-auto mr-18">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q1" data-show-el="#houseInfo">
+														<div class="quiz-checkbox-radio__text">
+															Ja
+														</div>
+													</label>
 												</div>
-											</label>
+												<div class="form-quiz__group-item flex-width-auto">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q1" data-hide-el="#houseInfo">
+														<div class="quiz-checkbox-radio__text">
+															Nee
+														</div>
+													</label>
+												</div>
+											</div>
 										</div>
-										<div class="form-quiz__group-item flex-width-auto">
-											<label class="quiz-checkbox-radio">
-												<input type="radio" name="q1" data-hide-el="#houseInfo">
-												<div class="quiz-checkbox-radio__text">
-													Nee
+										<div id="houseInfo" class="form-quiz__row display-none">
+											<p>Wat is het adres van deze woning?</p>
+											<div class="form-quiz__group flex flex-wrap max-width-435">
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Postcode</span>
+														<input type="text" placeholder="Bijv.1072 AJ">
+													</label>
 												</div>
-											</label>
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Woonplaats</span>
+														<input type="text" placeholder="Bijv. Amsterdam">
+													</label>
+												</div>
+											</div>
+											<div class="form-quiz__group max-width-435">
+												<div class="form-quiz__group-item">
+													<label class="quiz-input">
+														<span>Straatnaam</span>
+														<input type="text" placeholder="Bijv.Jan Steenstraat">
+													</label>
+												</div>
+											</div>
+											<div class="form-quiz__group flex">
+												<div class="form-quiz__group-item mr-18 width-115">
+													<label class="quiz-input">
+														<span>Huisnummer</span>
+														<input type="text" placeholder="24">
+													</label>
+												</div>
+												<div class="form-quiz__group-item width-115">
+													<label class="quiz-input">
+														<span>Toevoeging</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-quiz__row flex align-items-cente mt-auto">
+											<button data-slide-to="0" class="prev first-slider mr-auto"
+												type="button"><span>Terug</span></button>
+											<button data-slide-to="next" class="ml-auto"
+												type="button"><span>Volgende</span></button>
 										</div>
 									</div>
 								</div>
-								<div id="houseInfo" class="form-quiz__row display-none">
-									<p>Wat is het adres van deze woning?</p>
-									<div class="form-quiz__group flex flex-wrap max-width-435">
-										<div class="form-quiz__group-item half min-width-150">
-											<label class="quiz-input">
-												<span>Postcode</span>
-												<input type="text" placeholder="Bijv.1072 AJ">
-											</label>
-										</div>
-										<div class="form-quiz__group-item half min-width-150">
-											<label class="quiz-input">
-												<span>Woonplaats</span>
-												<input type="text" placeholder="Bijv. Amsterdam">
-											</label>
-										</div>
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Aankoopbegeleiding <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Aankoop-icon.svg"
+											alt="">
 									</div>
-									<div class="form-quiz__group max-width-435">
-										<div class="form-quiz__group-item">
-											<label class="quiz-input">
-												<span>Straatnaam</span>
-												<input type="text" placeholder="Bijv.Jan Steenstraat">
-											</label>
-										</div>
-									</div>
-									<div class="form-quiz__group flex">
-										<div class="form-quiz__group-item mr-18 width-115">
-											<label class="quiz-input">
-												<span>Huisnummer</span>
-												<input type="text" placeholder="24">
-											</label>
-										</div>
-										<div class="form-quiz__group-item width-115">
-											<label class="quiz-input">
-												<span>Toevoeging</span>
-												<input type="text" placeholder="">
-											</label>
-										</div>
-									</div>
-								</div>
-								<div class="form-quiz__row flex align-items-cente mt-auto">
-									<button data-slide-to="next" class="ml-auto" type="button"><span>Volgende</span></button>
-								</div>
-							</div>
-						</div>
-						<div class="form-quiz__item swiper-slide">
-							<div class="form-quiz__head">
-								Aankoopbegeleiding <img class="img-svg" src="img/icons/Aankoop-icon.svg" alt="">
-							</div>
-							<div class="form-quiz__content">
-								<div class="form-quiz__row">
-									<p>Is dit uw eerste huis of heeft u al eerder een huis gekocht?</p>
-									<div class="form-quiz__group flex flex-wrap">
-										<div class="form-quiz__group-item flex-width-auto mr-18">
-											<label class="quiz-checkbox-radio">
-												<input type="radio" name="q2">
-												<div class="quiz-checkbox-radio__text">
-													Dit is mijn eerste huis
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<p>Is dit uw eerste huis of heeft u al eerder een huis gekocht?</p>
+											<div class="form-quiz__group flex flex-wrap">
+												<div class="form-quiz__group-item flex-width-auto mr-18">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q2">
+														<div class="quiz-checkbox-radio__text">
+															Dit is mijn eerste huis
+														</div>
+													</label>
 												</div>
-											</label>
-										</div>
-										<div class="form-quiz__group-item flex-width-auto">
-											<label class="quiz-checkbox-radio">
-												<input type="radio" name="q2">
-												<div class="quiz-checkbox-radio__text">
-													Ik heb al eerder gekocht
+												<div class="form-quiz__group-item flex-width-auto">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q2">
+														<div class="quiz-checkbox-radio__text">
+															Ik heb al eerder gekocht
+														</div>
+													</label>
 												</div>
-											</label>
+											</div>
 										</div>
-									</div>
-								</div>
-								<div class="form-quiz__row">
-									<p>Hoe snel wilt u verhuizen?</p>
-									<div class="form-quiz__group flex flex-wrap max-width-680">
-										<div class="form-quiz__group-item half">
-											<label class="quiz-checkbox-radio width-full">
-												<input type="radio" name="q3">
-												<div class="quiz-checkbox-radio__text width-full">
-													Binnen 4 wiken
+										<div class="form-quiz__row">
+											<p>Hoe snel wilt u verhuizen?</p>
+											<div class="form-quiz__group flex flex-wrap max-width-680">
+												<div class="form-quiz__group-item half">
+													<label class="quiz-checkbox-radio width-full">
+														<input type="radio" name="q3">
+														<div class="quiz-checkbox-radio__text width-full">
+															Binnen 4 wiken
+														</div>
+													</label>
 												</div>
-											</label>
-										</div>
-										<div class="form-quiz__group-item half">
-											<label class="quiz-checkbox-radio width-full">
-												<input type="radio" name="q3">
-												<div class="quiz-checkbox-radio__text width-full" >
-													In het komende half jaar
+												<div class="form-quiz__group-item half">
+													<label class="quiz-checkbox-radio width-full">
+														<input type="radio" name="q3">
+														<div class="quiz-checkbox-radio__text width-full">
+															In het komende half jaar
+														</div>
+													</label>
 												</div>
-											</label>
-										</div>
-										<div class="form-quiz__group-item half">
-											<label class="quiz-checkbox-radio width-full">
-												<input type="radio" name="q3">
-												<div class="quiz-checkbox-radio__text width-full">
-													Tussen de 1 tot 3 maanden
+												<div class="form-quiz__group-item half">
+													<label class="quiz-checkbox-radio width-full">
+														<input type="radio" name="q3">
+														<div class="quiz-checkbox-radio__text width-full">
+															Tussen de 1 tot 3 maanden
+														</div>
+													</label>
 												</div>
-											</label>
-										</div>
-										<div class="form-quiz__group-item half">
-											<label class="quiz-checkbox-radio width-full">
-												<input type="radio" name="q3">
-												<div class="quiz-checkbox-radio__text width-full">
-													Ik heb geen haast en een jaar de tijd
+												<div class="form-quiz__group-item half">
+													<label class="quiz-checkbox-radio width-full">
+														<input type="radio" name="q3">
+														<div class="quiz-checkbox-radio__text width-full">
+															Ik heb geen haast en een jaar de tijd
+														</div>
+													</label>
 												</div>
-											</label>
+											</div>
 										</div>
-									</div>
-								</div>
 
-								<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
-									<button data-slide-to="next" class="ml-auto" type="button"><span>Volgende</span></button>
-								</div>
-							</div>
-						</div>
-						<div class="form-quiz__item swiper-slide">
-							<div class="form-quiz__head">
-								Hoe wilt u contact? <img class="img-svg" src="img/icons/phone-icon.svg" alt="">
-							</div>
-							<div class="form-quiz__content">
-								<div class="form-quiz__row">
-									<p>Wilt u liever hebben dat wij u bellen of mailen?</p>
-									<div class="form-quiz__group flex flex-wrap">
-										<div class="form-quiz__group-item flex-width-auto mr-18">
-											<label class="quiz-checkbox-radio">
-												<input type="radio" name="q4">
-												<div class="quiz-checkbox-radio__text">
-													Bellen
-												</div>
-											</label>
-										</div>
-										<div class="form-quiz__group-item flex-width-auto">
-											<label class="quiz-checkbox-radio">
-												<input type="radio" name="q4">
-												<div class="quiz-checkbox-radio__text">
-													Mailen
-												</div>
-											</label>
+										<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+											<button data-slide-to="prev" class="prev mr-auto"
+												type="button"><span>Terug</span></button>
+											<button data-slide-to="next" class="ml-auto"
+												type="button"><span>Volgende</span></button>
 										</div>
 									</div>
 								</div>
-								<div class="form-quiz__row">
-									<p>Wilt u graag een bezoek aan huis of een online meeting?</p>
-									<div class="form-quiz__group flex flex-wrap">
-										<div class="form-quiz__group-item flex-width-auto mr-18">
-											<label class="quiz-checkbox-radio">
-												<input type="radio" name="q5">
-												<div class="quiz-checkbox-radio__text">
-													Bezoek aan huis
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Hoe wilt u contact? <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/phone-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<p>Wilt u liever hebben dat wij u bellen of mailen?</p>
+											<div class="form-quiz__group flex flex-wrap">
+												<div class="form-quiz__group-item flex-width-auto mr-18">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q4" data-change-next-slide="4" data-set-next-slide-value-by-id="#btn-next-form1-slide4, next" data-change-button-type="#btn-next-form1-slide4, button">
+														<div class="quiz-checkbox-radio__text">
+															Maak direct een afspraak
+														</div>
+													</label>
 												</div>
-											</label>
-										</div>
-										<div class="form-quiz__group-item flex-width-auto">
-											<label class="quiz-checkbox-radio">
-												<input type="radio" name="q5">
-												<div class="quiz-checkbox-radio__text">
-													Online meeting
+												<div class="form-quiz__group-item flex-width-auto">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q4" data-change-next-slide="3" data-set-next-slide-value-by-id="#btn-next-form1-slide4, disabled" data-change-button-type="#btn-next-form1-slide4, submit">
+														<div class="quiz-checkbox-radio__text">
+															Bel mij op een later tijdstip terug
+														</div>
+													</label>
 												</div>
-											</label>
+											</div>
+										</div>
+										<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+											<button data-slide-to="prev" class="prev mr-auto"
+												type="button"><span>Terug</span></button>
+											<button data-slide-to="next" disabled class="ml-auto"
+												type="button"><span>Volgende</span></button>
 										</div>
 									</div>
 								</div>
-								<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
-									<button data-slide-to="next" class="ml-auto" type="button"><span>Volgende</span></button>
-								</div>
-							</div>
-						</div>
-						<div class="form-quiz__item swiper-slide">
-							<div class="form-quiz__head">
-								Wie? <img class="img-svg" src="img/icons/phone-icon.svg" alt="">
-							</div>
-							<div class="form-quiz__content">
-								<div class="form-quiz__row">
-									<p>Om u vragen zo snel mogelijk te kunnen beantwoorden, vragen we u om de volgende gegevens.</p>
-									<div class="form-quiz__group flex flex-wrap">
-										<div class="form-quiz__group-item half min-width-150">
-											<label class="quiz-input">
-												<span>Voornaam</span>
-												<input type="text" placeholder="">
-											</label>
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Wie? <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/phone-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<p>Om u vragen zo snel mogelijk te kunnen beantwoorden, vragen we u om de
+												volgende gegevens.</p>
+											<div class="form-quiz__group flex flex-wrap">
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Voornaam</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Achternaam</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Email</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Telefoonnr</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+											</div>
 										</div>
-										<div class="form-quiz__group-item half min-width-150">
-											<label class="quiz-input">
-												<span>Achternaam</span>
-												<input type="text" placeholder="">
-											</label>
-										</div>
-										<div class="form-quiz__group-item half min-width-150">
-											<label class="quiz-input">
-												<span>Email</span>
-												<input type="text" placeholder="">
-											</label>
-										</div>
-										<div class="form-quiz__group-item half min-width-150">
-											<label class="quiz-input">
-												<span>Telefoonnr</span>
-												<input type="text" placeholder="">
-											</label>
+										<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+											<button data-slide-to="2" class="prev mr-auto"
+												type="button"><span>Terug</span></button>
+											<button data-slide-to="next" class="ml-auto" id="btn-next-form1-slide4"
+												type="button"><span>Volgende</span></button>
 										</div>
 									</div>
 								</div>
-								<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
-									<button data-slide-to="next" class="ml-auto" type="button"><span>Volgende</span></button>
-								</div>
-							</div>
-						</div>
-						<div class="form-quiz__item swiper-slide">
-							<div class="form-quiz__head">
-								Wanner? <img class="img-svg" src="img/icons/calendar-icon.svg" alt="">
-							</div>
-							<div class="form-quiz__content">
-								<div class="form-quiz__row">
-									<div class="form-quiz__calendar">
-										<div class="form-quiz__calendar-label">Calendy</div>
-										<div class="form-quiz__calendar-body">
-											<iframe src="https://calendly.com/marssagency/15min?embed_domain=aboutmarss.nl&amp;embed_type=Inline&amp;hide_event_type_details=1&amp;hide_gdpr_banner=1" width="100%" height="100%" frameborder="0" style="opacity: 1; visibility: visible;"></iframe>
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Wanner? <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/calendar-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<div class="form-quiz__calendar">
+												<div class="form-quiz__calendar-label">Calendy</div>
+												<div class="form-quiz__calendar-body">
+													<input type="text" name="date" class="date-input" hidden>
+												</div>
+											</div>
+										</div>
+										<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+											<button data-slide-to="2" class="prev mr-auto"
+												type="button"><span>Terug</span></button>
+											<button type="submit" class="ml-auto"><span>Indienen</span></button>
 										</div>
 									</div>
 								</div>
-								<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
-									<button data-slide-to="next" class="ml-auto" type="button"><span>Volgende</span></button>
-								</div>
 							</div>
-						</div>
-						<div class="form-quiz__item swiper-slide last">
-							<div class="form-quiz__head">
+							<div class="swiper-pagination"></div>
+						</form>
+						<form id="quizForm2" action="/" class="swiper-container swiper-slide">
+							<div class="swiper-wrapper">
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Aanhuurbegeleiding <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Aanhuur-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<p>In welke provincie bent u op zoek naar een woning?</p>
+											<div class="form-quiz__group">
+												<div class="form-quiz__group-item max-width-290">
+													<div class="select-wrap">
+														<select name="" class="_select">
+															<option value="1" selected>Noord-Holland</option>
+															<option value="2">Oostenrijk</option>
+															<option value="3">Nederland</option>
+														</select>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-quiz__row">
+											<p>In welke stad bent u op zoek?</p>
+											<div class="form-quiz__group">
+												<div class="form-quiz__group-item max-width-210">
+													<label class="quiz-input">
+														<input type="text" placeholder="Bijv. Amsterdam">
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-quiz__row flex align-items-cente mt-auto">
+											<button data-slide-to="0" class="prev first-slider mr-auto"
+												type="button"><span>Terug</span></button>
+											<button data-slide-to="next" class="ml-auto"
+												type="button"><span>Volgende</span></button>
+										</div>
+									</div>
+								</div>
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Aankoopbegeleiding <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Aankoop-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<p>Wat wilt u per maand besteden aan huur?</p>
+											<div class="form-quiz__group flex flex-wrap max-width-395">
+												<div class="form-quiz__group-item half">
+													<label class="quiz-checkbox-radio width-full">
+														<input type="radio" name="q1">
+														<div class="quiz-checkbox-radio__text width-full">
+															&lsaquo; 1000,-
+														</div>
+													</label>
+												</div>
+												<div class="form-quiz__group-item half">
+													<label class="quiz-checkbox-radio width-full">
+														<input type="radio" name="q1">
+														<div class="quiz-checkbox-radio__text width-full">
+															1500,- tot 2000,-
+														</div>
+													</label>
+												</div>
+												<div class="form-quiz__group-item half">
+													<label class="quiz-checkbox-radio width-full">
+														<input type="radio" name="q1">
+														<div class="quiz-checkbox-radio__text width-full">
+															1000,- tot 1500,-
+														</div>
+													</label>
+												</div>
+												<div class="form-quiz__group-item half">
+													<label class="quiz-checkbox-radio width-full">
+														<input type="radio" name="q1">
+														<div class="quiz-checkbox-radio__text width-full">
+															&rsaquo; 2000,-
+														</div>
+													</label>
+												</div>
+											</div>
+										</div>
 
-							</div>
-							<div class="form-quiz__content">
-								<div class="form-quiz__end text-center">
-									<div class="form-quiz__row form-quiz__end-img">
-										<img src="img/photo/and-img.png" alt="">
-									</div>
-									<div class="form-quiz__row">
-										<h3>Dankuwel!</h3>
-										<h3>We nemen zo snel mogelijk met u contact op.</h3>
-									</div>
-									<div class="form-quiz__row">
-										<p>Kunnen wij u verder nog helpen met:</p>
-										<div class="quiz-services">
-											<div class="quiz-services__item">
-												<p>Aankoopbegeleiding</p>
-												<img src="img/icons/Aankoop-icon.svg" alt="">
-											</div>
-											<div class="quiz-services__item">
-												<p>Aanhuurbegeleiding</p>
-												<img src="img/icons/Aanhuur-icon.svg" alt="">
-											</div>
-											<div class="quiz-services__item">
-												<p>Beleggingspanden</p>
-												<img src="img/icons/Belegpand-icon.svg" alt="">
-											</div>
+										<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+											<button data-slide-to="prev" class="prev mr-auto"
+												type="button"><span>Terug</span></button>
+											<button data-slide-to="next" class="ml-auto"
+												type="button"><span>Volgende</span></button>
 										</div>
 									</div>
 								</div>
-								<div class="form-quiz__row text-center mt-auto">
-									<button type="submit"><span>sluit venser</span></button>
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Hoe wilt u contact? <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/phone-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<p>Wilt u liever hebben dat wij u bellen of mailen?</p>
+											<div class="form-quiz__group flex flex-wrap">
+												<div class="form-quiz__group-item flex-width-auto mr-18">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q3" data-change-next-slide="4">
+														<div class="quiz-checkbox-radio__text">
+															Maak direct een afspraak
+														</div>
+													</label>
+												</div>
+												<div class="form-quiz__group-item flex-width-auto">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q3" data-change-next-slide="3">
+														<div class="quiz-checkbox-radio__text">
+															Bel mij op een later tijdstip terug
+														</div>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+											<button data-slide-to="prev" class="prev mr-auto"
+												type="button"><span>Terug</span></button>
+											<button data-slide-to="next" disabled class="ml-auto"
+												type="button"><span>Volgende</span></button>
+										</div>
+									</div>
+								</div>
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Wie? <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/phone-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<p>Om u vragen zo snel mogelijk te kunnen beantwoorden, vragen we u om de
+												volgende gegevens.</p>
+											<div class="form-quiz__group flex flex-wrap">
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Voornaam</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Achternaam</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Email</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Telefoonnr</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+											<button data-slide-to="2" class="prev mr-auto"
+												type="button"><span>Terug</span></button>
+											<button data-slide-to="next" class="ml-auto"
+												type="button"><span>Volgende</span></button>
+										</div>
+									</div>
+								</div>
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Wanner? <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/calendar-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<div class="form-quiz__calendar">
+												<div class="form-quiz__calendar-label">Calendy</div>
+												<div class="form-quiz__calendar-body">
+													<input type="text" name="date" class="date-input" hidden>
+												</div>
+											</div>
+										</div>
+										<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+											<button data-slide-to="2" class="prev mr-auto"
+												type="button"><span>Terug</span></button>
+											<button type="submit" class="ml-auto"><span>Indienen</span></button>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
+							<div class="swiper-pagination"></div>
+						</form>
+						<form id="quizForm3" action="/" class="swiper-container swiper-slide">
+							<div class="swiper-wrapper">
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Beleggingspanden <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Belegpand-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<p>Heeft u ervaring met investeren in vastgoed?</p>
+											<div class="form-quiz__group flex">
+												<div class="form-quiz__group-item flex-width-auto mr-18">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q1">
+														<div class="quiz-checkbox-radio__text">
+															Ja
+														</div>
+													</label>
+												</div>
+												<div class="form-quiz__group-item flex-width-auto">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q1">
+														<div class="quiz-checkbox-radio__text">
+															Nee
+														</div>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-quiz__row">
+											<p>Heeft u ervaring met financiele producten?</p>
+											<div class="form-quiz__group flex">
+												<div class="form-quiz__group-item flex-width-auto mr-18">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q2">
+														<div class="quiz-checkbox-radio__text">
+															Ja
+														</div>
+													</label>
+												</div>
+												<div class="form-quiz__group-item flex-width-auto">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q2">
+														<div class="quiz-checkbox-radio__text">
+															Nee
+														</div>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-quiz__row flex align-items-cente mt-auto">
+											<button data-slide-to="0" class="prev first-slider mr-auto"
+												type="button"><span>Terug</span></button>
+											<button data-slide-to="next" class="ml-auto"
+												type="button"><span>Volgende</span></button>
+										</div>
+									</div>
+								</div>
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Beleggingspanden <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Belegpand-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<p>Wat wilt u per maand besteden aan huur?</p>
+											<div class="form-quiz__group flex flex-wrap max-width-395">
+												<div class="form-quiz__group-item half">
+													<label class="quiz-checkbox-radio width-full">
+														<input type="radio" name="q1">
+														<div class="quiz-checkbox-radio__text width-full">
+															&lsaquo; 1000,-
+														</div>
+													</label>
+												</div>
+												<div class="form-quiz__group-item half">
+													<label class="quiz-checkbox-radio width-full">
+														<input type="radio" name="q1">
+														<div class="quiz-checkbox-radio__text width-full">
+															1500,- tot 2000,-
+														</div>
+													</label>
+												</div>
+												<div class="form-quiz__group-item half">
+													<label class="quiz-checkbox-radio width-full">
+														<input type="radio" name="q1">
+														<div class="quiz-checkbox-radio__text width-full">
+															1000,- tot 1500,-
+														</div>
+													</label>
+												</div>
+												<div class="form-quiz__group-item half">
+													<label class="quiz-checkbox-radio width-full">
+														<input type="radio" name="q1">
+														<div class="quiz-checkbox-radio__text width-full">
+															&rsaquo; 2000,-
+														</div>
+													</label>
+												</div>
+											</div>
+										</div>
+
+										<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+											<button data-slide-to="prev" class="prev mr-auto"
+												type="button"><span>Terug</span></button>
+											<button data-slide-to="next" class="ml-auto"
+												type="button"><span>Volgende</span></button>
+										</div>
+									</div>
+								</div>
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Hoe wilt u contact? <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/phone-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<p>Wilt u liever hebben dat wij u bellen of mailen?</p>
+											<div class="form-quiz__group flex flex-wrap">
+												<div class="form-quiz__group-item flex-width-auto mr-18">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q3" data-change-next-slide="4">
+														<div class="quiz-checkbox-radio__text">
+															Maak direct een afspraak
+														</div>
+													</label>
+												</div>
+												<div class="form-quiz__group-item flex-width-auto">
+													<label class="quiz-checkbox-radio">
+														<input type="radio" name="q3" data-change-next-slide="3">
+														<div class="quiz-checkbox-radio__text">
+															Bel mij op een later tijdstip terug
+														</div>
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+											<button data-slide-to="prev" class="prev mr-auto"
+												type="button"><span>Terug</span></button>
+											<button data-slide-to="next" disabled class="ml-auto"
+												type="button"><span>Volgende</span></button>
+										</div>
+									</div>
+								</div>
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Wie? <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/phone-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<p>Om u vragen zo snel mogelijk te kunnen beantwoorden, vragen we u om de
+												volgende gegevens.</p>
+											<div class="form-quiz__group flex flex-wrap">
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Voornaam</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Achternaam</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Email</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+												<div class="form-quiz__group-item half min-width-150">
+													<label class="quiz-input">
+														<span>Telefoonnr</span>
+														<input type="text" placeholder="">
+													</label>
+												</div>
+											</div>
+										</div>
+										<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+											<button data-slide-to="2" class="prev mr-auto"
+												type="button"><span>Terug</span></button>
+											<button data-slide-to="next" class="ml-auto"
+												type="button"><span>Volgende</span></button>
+										</div>
+									</div>
+								</div>
+								<div class="form-quiz__item swiper-slide">
+									<div class="form-quiz__head">
+										Wanner? <img class="img-svg"
+											src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/calendar-icon.svg"
+											alt="">
+									</div>
+									<div class="form-quiz__content">
+										<div class="form-quiz__row">
+											<div class="form-quiz__calendar">
+												<div class="form-quiz__calendar-label">Calendy</div>
+												<div class="form-quiz__calendar-body">
+													<input type="text" name="date" class="date-input" hidden>
+												</div>
+											</div>
+										</div>
+										<div class="form-quiz__row flex flex-wrap align-items-cente mt-auto">
+											<button data-slide-to="2" class="prev mr-auto"
+												type="button"><span>Terug</span></button>
+											<button type="submit" class="ml-auto"><span>Indienen</span></button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-pagination"></div>
+						</form>
 					</div>
 					<div class="swiper-pagination"></div>
 				</div>
-			</form>
+			</div>
 		</div>
 	</div>
 </div>
+
+<div class="popup" id="messageSuccessfulSubmit">
+	<div class="popup_body">
+		<div class="popup_content">
+			<div class="form-quiz">
+				<div class="form-quiz__item">
+					<div class="form-quiz__head">
+
+					</div>
+					<div class="form-quiz__content">
+						<div class="form-quiz__end text-center">
+							<div class="form-quiz__row form-quiz__end-img">
+								<img src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/photo/and-img.png"
+									alt="">
+							</div>
+							<div class="form-quiz__row">
+								<h3 class="final-text">Dankuwel!</h3>
+								<h3>We nemen zo snel mogelijk met u contact op.</h3>
+							</div>
+							<div class="form-quiz__row">
+								<p>Kunnen wij u verder nog helpen met:</p>
+								<div class="quiz-services">
+									<a href="#" class="quiz-services__item">
+										<p>Aankoopbegeleiding</p>
+										<img src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Aankoop-icon.svg"
+											alt="">
+									</a>
+									<a href="#" class="quiz-services__item">
+										<p>Aanhuurbegeleiding</p>
+										<img src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Aanhuur-icon.svg"
+											alt="">
+									</a>
+									<a href="#" class="quiz-services__item">
+										<p>Beleggingspanden</p>
+										<img src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Belegpand-icon.svg"
+											alt="">
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="form-quiz__row text-center mt-auto">
+							<button class="close-popup"><span>sluit venser</span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="popup" id="messageUnsuccessfulSubmit">
+	<div class="popup_body">
+		<div class="popup_content">
+			<div class="form-quiz">
+				<div class="form-quiz__item">
+					<div class="form-quiz__head">
+
+					</div>
+					<div class="form-quiz__content">
+						<div class="form-quiz__end text-center">
+							<div class="form-quiz__row form-quiz__end-img">
+								<img src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/photo/and-img.png"
+									alt="">
+							</div>
+							<div class="form-quiz__row">
+								<h3 style="color: red;">Sorry, er ging iets mis</h3>
+								<h3 style="color: red;">Probeer het opnieuw</h3>
+							</div>
+							<div class="form-quiz__row">
+								<p>Kunnen wij u verder nog helpen met:</p>
+								<div class="quiz-services">
+									<a href="#" class="quiz-services__item">
+										<p>Aankoopbegeleiding</p>
+										<img src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Aankoop-icon.svg"
+											alt="">
+									</a>
+									<a href="#" class="quiz-services__item">
+										<p>Aanhuurbegeleiding</p>
+										<img src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Aanhuur-icon.svg"
+											alt="">
+									</a>
+									<a href="#" class="quiz-services__item">
+										<p>Beleggingspanden</p>
+										<img src="https://staging.uwaankoopmakelaars.nl/wp-content/themes/Divi-child/icons/Belegpand-icon.svg"
+											alt="">
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="form-quiz__row text-center mt-auto">
+							<button class="close-popup"><span>sluit venser</span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<script>
+	// example using api popup ==========
+
+	let allForms = [document.querySelector('#quizForm1'), document.querySelector('#quizForm2'), document.querySelector('#quizForm3')];
+	if (allForms.length) {
+		allForms.forEach(form => {
+			form.addEventListener('submit', (e) => {
+				e.preventDefault();
+
+				let successfulSubmit = true;
+
+				if (successfulSubmit) {
+					popup.open('#messageSuccessfulSubmit');
+				} else {
+					popup.open('#messageUnsuccessfulSubmit');
+				}
+
+			})
+		})
+	}
+</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 		
-<script src="js/vendors.js"></script>
-<script src="js/app.js"></script>
+<script src="js/script.js"></script>
 <!-- <script
 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7Q82l2QjSzJJk1uUW3OzUBGPTlbk8w1g&callback=initMap&libraries=&v=weekly"
 defer
 ></script> -->
+
+		<div class="popup-btn">
+			<div class="btn-tooltip">
+				Plan adviesgesprek
+			</div>
+			<a href="#quizPopup" class="popup-link">
+				<svg width="100%" height="100%" viewBox="0 0 700 700" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+					<g>
+						<g transform="matrix(1.29968,0,0,1.29968,-120.201,-5.94959)">
+							<path d="M352.5,112.54C355.539,112.54 358.582,113.544 360.902,115.552L432.207,177.236C433.907,178.701 435.485,179.404 436.801,179.404C439.094,179.404 440.61,177.287 440.61,173.392L440.61,158.513C440.61,152.38 445.586,147.404 451.719,147.404L479.465,147.404C485.597,147.404 490.574,152.381 490.574,158.513L490.574,216.615C490.574,222.748 494.335,230.978 498.976,234.994L533.609,264.955C538.254,268.971 537.035,272.225 530.902,272.225L501.679,272.225C495.546,272.225 490.57,276.631 490.57,282.06L490.57,437.916C490.57,444.049 485.593,449.025 479.461,449.025L225.541,449.029C219.408,449.029 214.432,444.053 214.432,437.92L214.432,283.33C214.432,277.197 209.455,272.221 203.323,272.221L174.1,272.221C167.967,272.221 166.752,268.967 171.393,264.952L344.103,115.552C346.419,113.536 349.462,112.536 352.501,112.536M352.501,95.872C345.33,95.872 338.474,98.384 333.2,102.939L160.49,252.349C149.135,262.165 151.951,272.857 153.084,275.9C154.217,278.95 159.084,288.88 174.096,288.88L197.764,288.88L197.764,437.91C197.764,453.222 210.225,465.683 225.537,465.683L479.467,465.683C494.779,465.683 507.24,453.222 507.24,437.91L507.24,288.88L530.908,288.88C545.924,288.88 550.787,278.946 551.92,275.9C553.053,272.857 555.869,262.158 544.51,252.341L509.881,222.38C508.826,221.38 507.303,218.051 507.236,216.571L507.24,158.501C507.24,143.189 494.779,130.728 479.467,130.728L451.721,130.728C439.6,130.728 429.268,138.533 425.487,149.376L371.807,102.938C366.526,98.379 359.674,95.868 352.502,95.868L352.501,95.872Z" style="fill-rule:nonzero;"/>
+						</g>
+					</g>
+				</svg>				
+			</a>
+		</div>
 	</body>
 </html>

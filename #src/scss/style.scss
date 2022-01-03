@@ -6,6 +6,16 @@
 @import "plagins/swiper-bundle";
 /* and swiper-slider plugin  ==============*/
 
+/* datepicker plugin  ==============*/
+@import "plagins/datepicker";
+/* and datepicker plugin  ==============*/
+
+/* select  ==============*/
+@import "forms";
+/* and select  ==============*/
+
+
+
 * {
 	padding: 0px;
 	margin: 0px;
@@ -34,16 +44,36 @@ body {
 	@media (max-width: 1100px) {
 		padding-top: 0px;
 	}
+
+	&.lock {
+		overflow: hidden;
+	}
 }
 
+[disabled] {
+	opacity: 0.5;
+	pointer-events: none;
+}
 
 /* header nav =============== */
+.et_pb_scroll_top.et-pb-icon {
+	z-index: 46 !important;
+}
+
+body.admin-bar {
+	& header {
+		@media (min-width: 1100px) {
+			top: 32px;
+		}
+	}
+}
+
 header {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 47;
+	z-index: 47 !important;
 
 	// & .menu3_top_section>.et_pb_row>.et_pb_column_1_4.et_pb_column_5_tb_header,
 	// & .menu3_top_section>.et_pb_row>.et_pb_column_1_4.et_pb_column_7_tb_header
@@ -53,13 +83,15 @@ header {
 	// 	float: none;
 	// }
 
-	// & .menu3_top_section>.et_pb_row>.et_pb_column_1_2.et_pb_column_6_tb_header {
-	// 	width: auto !important;
-	// 	flex: 0 1 auto !important;
-	// 	float: none;
-	// 	margin-left: auto;
+	& .menu3_top_section>.et_pb_row>.et_pb_column_1_2.et_pb_column_6_tb_header {
+		& .menu3_page_menu {
+			opacity: 1;
+		}
+	}
 
-	// }
+	.menu3_page_menu {
+		opacity: 0;
+	}
 
 	& .menu3_top_section {
 		& .fullwidth-menu {
@@ -117,6 +149,10 @@ header {
 			left: -40px;
 		}
 	}
+}
+
+.divi-mobile-menu {
+	z-index:  47 !important;
 }
 /* and header nav =============== */
 
